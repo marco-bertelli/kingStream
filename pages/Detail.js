@@ -2,6 +2,8 @@ import Image from "next/image";
 import { filmOnline } from "../utils/fimAvailable";
 import ReactPlayer from 'react-player/lazy';
 
+
+
 function Detail({ result }) {
   console.log(result);
   const BASE_URL = "https://image.tmdb.org/t/p/original";
@@ -47,7 +49,15 @@ function Detail({ result }) {
         ></div>
       </div>
       <div className="movie_card">
-      {online != undefined && <ReactPlayer url={online.url} />}
+      {online != undefined ? (
+      <div className='player-wrapper'>
+      <ReactPlayer 
+       width='100%'
+       height='100%'
+      controls={false}
+      className="w-16 md:w-32 lg:w-48"  url={online.url} />
+      </div>
+      ): <p>NON ANCORA DISPONIBILE</p>}
       </div>
     </div>
     
