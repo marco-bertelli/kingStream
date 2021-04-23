@@ -26,3 +26,8 @@ export default function Home() {
     </div>
   );
 }
+export async function getServerSideProps(context){
+  const genere = context.query.genere;
+
+  const request = await fetch
+}
