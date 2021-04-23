@@ -1,13 +1,16 @@
 import { ThumbUpIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import {forwardRef} from "react"
+import { useRouter } from 'next/router'
 
 const Thumbnail= forwardRef(({ result }, ref) => {
   const BASE_URL = "https://image.tmdb.org/t/p/original";
+  const router = useRouter();
   return (
     <div ref={ref} className='p-2 group cursor-pointer transition duration-200
     ease-in transform sm:hover:scale-105 hover:z-50'>
       <Image
+        onClick={() => router.push(`/Detail?id=${result.id}`)}
         layout="responsive"
         src={
           `${BASE_URL}${result.backdrop_path || result.poster_path}` ||
